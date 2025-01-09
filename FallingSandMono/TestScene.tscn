@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4n3422fmgehr"]
+
+[ext_resource type="Script" path="res://FSViewport.cs" id="1_u635m"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pcbfn"]
+frequency = 0.001
+offset = Vector3(61.5, 181.45, 0)
+fractal_type = 2
+fractal_octaves = 10
+fractal_lacunarity = 2.855
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qivyf"]
+frequency = 0.0129
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5r3rp"]
+noise_type = 4
+frequency = 0.2049
+fractal_type = 3
+fractal_weighted_strength = 0.45
+fractal_ping_pong_strength = 0.935
+
+[sub_resource type="Gradient" id="Gradient_lbdf3"]
+offsets = PackedFloat32Array(0.0037594, 0.25188, 0.541353, 0.729323, 0.93609)
+colors = PackedColorArray(0, 0, 1, 1, 0.486275, 0, 0.529412, 1, 1, 0.282353, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="FSViewport" type="Node2D" parent="."]
+script = ExtResource("1_u635m")
+Noises = Array[FastNoiseLite]([SubResource("FastNoiseLite_pcbfn"), SubResource("FastNoiseLite_qivyf"), SubResource("FastNoiseLite_5r3rp")])
+Colors = SubResource("Gradient_lbdf3")
+GridSize = 64
+TileSize = 10
+TicksPerSecond = 120
